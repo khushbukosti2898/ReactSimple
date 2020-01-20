@@ -1,0 +1,89 @@
+<html>
+<head>  
+<script src="https://unpkg.com/react@16/umd/react.development.js"></script>  
+<script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>  
+<script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>  
+</head>  
+<body>  
+    <div id="root"></div>  
+    
+    <script type="text/babel">  
+      
+    class Hello extends React.Component { 
+        state={
+            ans:0,
+            a:0,
+            b:0
+        } 
+        /* getvalue1=(e)=>{
+            //console.log(typeof e.target.value)
+            this.setState({
+                
+                a:Number(e.target.value)
+            })
+        }
+        getvalue2=(e)=>{
+            //console.log(typeof e.target.value)
+            this.setState({
+                b:Number(e.target.value)
+            })
+        } */
+        getvalue=(e)=>{
+            //console.log(typeof e.target.value)
+            this.setState
+                ({[e.target.name]:e.target.value});
+                
+           
+        }
+        
+        addbtn=(e)=>{
+            //console.log(e.target.value)
+            if(e.target.value==='+')
+            this.setState({ ans:this.state.a+this.state.b })
+            if(e.target.value==='-')
+            this.setState({ ans:this.state.a-this.state.b })  
+            if(e.target.value==='*')
+            this.setState({ ans:this.state.a*this.state.b })
+            if(e.target.value=='/')
+            this.setState({ ans:this.state.a/this.state.b })   
+        };
+        /* subbtn=(e)=>{
+            this.setState({
+                ans : this.state.a-this.state.b
+            })
+        };
+        mulbtn=(e)=>{
+            this.setState({
+                ans : this.state.a*this.state.b
+            })
+        };
+        divbtn=(e)=>{
+            this.setState({
+                ans : this.state.a/this.state.b
+            })
+        };  */
+ 
+        
+        render() {  
+            return <div><center>
+                <form>
+                    <input type="text" placeholder="Enter No1" name="a" onChange={this.getvalue}></input>
+                    <input type="text" placeholder="Enter No2" name="b" onChange={this.getvalue}></input> 
+                    <br/><br/>
+                      
+                </form>
+                <button value="+" onClick={this.addbtn}>Addition</button>
+                    <button value="-"  onClick={this.addbtn}>Subtraction</button>
+                    <button value="*"  onClick={this.addbtn}>Mul</button>
+                    <button value="/"  onClick={this.addbtn}>Div</button><br/><br/>
+                    <input type="text" readOnly value={this.state.ans}></input> 
+                </center></div>;  
+        }  
+    } 
+    
+      
+    ReactDOM.render(<Hello />,document.getElementById("root"));
+   
+</script>  
+</body>  
+</html>

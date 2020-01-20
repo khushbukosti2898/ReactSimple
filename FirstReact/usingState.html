@@ -1,0 +1,62 @@
+<html>
+<head>  
+<script src="https://unpkg.com/react@16/umd/react.development.js"></script>  
+<script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>  
+<script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>  
+</head>  
+<body>  
+    <div id="root"></div>  
+    
+    <script type="text/babel">  
+      
+    class Hello extends React.Component { 
+        state={
+            count:1,
+            ans:0,
+            a:1,
+            b:2
+        } 
+        incbtn=()=>{
+            console.log("b set"+this.state.count);
+            this.setState((prestate,props)=>({
+                count : this.prestate.count+1
+            }))
+            this.setState((prestate,props)=>({
+                value : `message: ${this.prestate.count}`
+            }))
+            
+            console.log("a set"+this.state.value);
+        };
+        decbtn=()=>{
+            this.setState({
+                count : this.state.count-1
+            })
+        }; 
+        
+        addbtn=()=>{
+            this.setState({
+                count : this.state.a + this.state.b
+            })
+        }; 
+ 
+        
+        render() {  
+            return <div><center><h1>Change State Demo</h1>
+                <button onClick={this.incbtn}>Increment</button>
+                <button onClick={this.decbtn}>Decrement</button>
+                <button onClick={this.addbtn}>Addition</button>
+                <h2>{this.state.count}</h2>
+                </center></div>;  
+        }  
+    } 
+    /* class Morning extends React.Component {  
+        render() {  
+            return <h1>Good Morning</h1>;  
+        }  
+    } */
+      
+    ReactDOM.render(<Hello />,document.getElementById("root"));
+   
+</script>  
+</body>  
+</html>
